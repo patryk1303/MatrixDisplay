@@ -31,7 +31,21 @@ namespace MatrixDisplay
         public int DotRadius
         {
             get { return DotSize; }
-            set { DotSize = value; }
+            set
+            {
+                if (value <= 0)
+                    DotSize = 1;
+                else
+                    DotSize = value;
+            }
+        }
+
+        private string _Text = "E";
+        [Category("Colors")]
+        public string MatrixText
+        {
+            get { return _Text; }
+            set { _Text = value; }
         }
 
         public MatrixDisplay() 
@@ -51,19 +65,59 @@ namespace MatrixDisplay
             int h = ClientRectangle.Height;
             int w = ClientRectangle.Width;
 
-            int dotsOnWidth = Width / (DotRadius * 2);
-            int dotsOnHeight = Height / (DotRadius * 2);
+            //int dotsOnWidth = Width / (DotRadius * 2) - DotRadius;
+            int dotsOnWidth = MatrixText.Length * 7;
+            //int dotsOnHeight = Height / (DotRadius * 2);
+            int dotsOnHeight = 7;
 
             Pen pen = new System.Drawing.Pen(DotDisabledColor,2);
             SolidBrush brush = new SolidBrush(DotDisabledColor);
-            
+
+            //Console.WriteLine("dotsOnWidth: {0}, dotsOnHeight: {1}", dotsOnWidth, dotsOnHeight);
+
             for(int i=0;i<dotsOnWidth;++i)
             {
-                for(int j=0;j<dotsOnHeight;++j)
+                byte charIndex = charToIndex(MatrixText[i/7]);
+                for (int j = 0; j < dotsOnHeight; ++j)
                 {
-                    e.Graphics.FillEllipse(brush, i * DotRadius + DotRadius * 2, j * DotRadius + DotRadius * 2, DotRadius * 2, DotRadius * 2);
+                    var x = i * (DotRadius * 2) + DotRadius * 2;
+                    var y = j * (DotRadius*2) + DotRadius*2;
+
+                    if (charIndex < 128)
+                    {
+                        if (Letters.SLetters[charIndex, j, i % 7] == 0)
+                            brush.Color = DotDisabledColor;
+                        else if (Letters.SLetters[charIndex, j, i % 7] == 1)
+                            brush.Color = DotEnabledColor;
+                    }
+                    else
+                    {
+
+                    }
+
+                    //Console.WriteLine("char: {0}, code: {1}, index: {2}", _c, (byte)_c, charToIndex(_c));
+
+                    //Console.WriteLine("x: {0}, y: {1}", x, y);
+                    e.Graphics.FillEllipse(brush, x, y, DotRadius * 2, DotRadius * 2);
                 }
             }
+        }
+
+        private byte charToIndex(char _c)
+        {
+            byte code = (byte)_c;
+
+            //Capital letter
+            if (code >= 65 && code <= 90)
+                return (byte)(code - 65);
+            //Small letter
+            else if (code >= 97 && code <= 122)
+                return (byte)(code - 97);
+            //SPACE
+            else if (code == 32)
+                return 255;
+
+            return 0;
         }
     }
 }
