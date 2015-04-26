@@ -12,14 +12,16 @@ namespace MatrixDisplay
     public class MatrixDisplay : UserControl
     {
         private Color OnColor;
-        [Category("Colors")]
+        [Category("Dots")]
+        [Description("Dot color when it's enabled")]
         public Color DotEnabledColor
         {
             get { return OnColor; }
             set { OnColor = value; }
         }
         private Color OffColor;
-        [Category("Colors")]
+        [Category("Dots")]
+        [Description("Dot color when it's disabled")]
         public Color DotDisabledColor
         {
             get { return OffColor; }
@@ -27,7 +29,8 @@ namespace MatrixDisplay
         }
 
         private int DotSize;
-        [Category("Appearance")]
+        [Category("Dots")]
+        [Description("Dot radius")]
         public int DotRadius
         {
             get { return DotSize; }
@@ -41,14 +44,19 @@ namespace MatrixDisplay
         }
 
         private string _Text = "E";
-        [Category("Colors")]
+        [Category("Dots")]
+        [Description("Text to displat in matrix")]
         public string MatrixText
         {
             get { return _Text; }
             set { _Text = value; }
         }
 
-        public MatrixDisplay() 
+        /**
+         * MatrixDisplay contructor
+         * 
+         */
+        public MatrixDisplay()
         {
             ForeColor = Color.Black;
             DotDisabledColor = Color.Gray;
@@ -58,6 +66,9 @@ namespace MatrixDisplay
             DotRadius = 16;
         }
 
+        /**
+         * paints matrix
+         */ 
         protected override void OnPaint(PaintEventArgs e)
         {
             int l = ClientRectangle.Left;
@@ -94,6 +105,12 @@ namespace MatrixDisplay
             }
         }
 
+        /**
+         * Return the <b>Letters.SLetters</b> char index
+         * @param _c char to get index
+         * 
+         * @return char index if it's in supported range, if not - 0
+         */
         private byte charToIndex(char _c)
         {
             byte code = (byte)_c;

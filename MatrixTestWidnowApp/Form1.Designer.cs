@@ -34,8 +34,8 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.onColorBtn = new System.Windows.Forms.Button();
             this.offColorBtn = new System.Windows.Forms.Button();
-            this.matrixDisplay1 = new MatrixDisplay.MatrixDisplay();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.matrixDisplay1 = new MatrixDisplay.MatrixDisplay();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -103,21 +103,6 @@
             this.offColorBtn.UseVisualStyleBackColor = true;
             this.offColorBtn.Click += new System.EventHandler(this.offColorBtn_Click);
             // 
-            // matrixDisplay1
-            // 
-            this.matrixDisplay1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.matrixDisplay1.DotDisabledColor = System.Drawing.Color.Maroon;
-            this.matrixDisplay1.DotEnabledColor = System.Drawing.Color.Orange;
-            this.matrixDisplay1.DotRadius = 12;
-            this.matrixDisplay1.ForeColor = System.Drawing.Color.Black;
-            this.matrixDisplay1.Location = new System.Drawing.Point(3, 33);
-            this.matrixDisplay1.MatrixText = "EAC";
-            this.matrixDisplay1.Name = "matrixDisplay1";
-            this.matrixDisplay1.Size = new System.Drawing.Size(806, 207);
-            this.matrixDisplay1.TabIndex = 1;
-            // 
             // numericUpDown1
             // 
             this.numericUpDown1.Location = new System.Drawing.Point(181, 3);
@@ -140,6 +125,21 @@
             0,
             0});
             this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            // 
+            // matrixDisplay1
+            // 
+            this.matrixDisplay1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.matrixDisplay1.DotDisabledColor = System.Drawing.Color.Maroon;
+            this.matrixDisplay1.DotEnabledColor = System.Drawing.Color.Orange;
+            this.matrixDisplay1.DotRadius = 12;
+            this.matrixDisplay1.ForeColor = System.Drawing.Color.Black;
+            this.matrixDisplay1.Location = new System.Drawing.Point(3, 33);
+            this.matrixDisplay1.MatrixText = "KOMPONENT";
+            this.matrixDisplay1.Name = "matrixDisplay1";
+            this.matrixDisplay1.Size = new System.Drawing.Size(806, 207);
+            this.matrixDisplay1.TabIndex = 1;
             // 
             // Form1
             // 

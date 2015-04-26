@@ -8,6 +8,7 @@ namespace MatrixDisplay
 {
     static class Letters
     {
+        /// chars for dot matrix
         public static byte[,,] SLetters = 
         {
             {   // A
