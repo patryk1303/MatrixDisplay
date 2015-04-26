@@ -65,16 +65,11 @@ namespace MatrixDisplay
             int h = ClientRectangle.Height;
             int w = ClientRectangle.Width;
 
-            //int dotsOnWidth = Width / (DotRadius * 2) - DotRadius;
             int dotsOnWidth = MatrixText.Length * 7;
-            //int dotsOnHeight = Height / (DotRadius * 2);
             int dotsOnHeight = 7;
 
             Pen pen = new System.Drawing.Pen(DotDisabledColor,2);
             SolidBrush brush = new SolidBrush(DotDisabledColor);
-
-            //Console.WriteLine("dotsOnWidth: {0}, dotsOnHeight: {1}", dotsOnWidth, dotsOnHeight);
-
             for(int i=0;i<dotsOnWidth;++i)
             {
                 byte charIndex = charToIndex(MatrixText[i/7]);
@@ -94,10 +89,6 @@ namespace MatrixDisplay
                     {
 
                     }
-
-                    //Console.WriteLine("char: {0}, code: {1}, index: {2}", _c, (byte)_c, charToIndex(_c));
-
-                    //Console.WriteLine("x: {0}, y: {1}", x, y);
                     e.Graphics.FillEllipse(brush, x, y, DotRadius * 2, DotRadius * 2);
                 }
             }
@@ -113,6 +104,9 @@ namespace MatrixDisplay
             //Small letter
             else if (code >= 97 && code <= 122)
                 return (byte)(code - 97);
+            //Numbers 0-9
+            else if (code >= 48 && code <= 57)
+                return (byte)(code - 22);
             //SPACE
             else if (code == 32)
                 return 255;

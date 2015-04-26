@@ -35,8 +35,10 @@
             this.onColorBtn = new System.Windows.Forms.Button();
             this.offColorBtn = new System.Windows.Forms.Button();
             this.matrixDisplay1 = new MatrixDisplay.MatrixDisplay();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox1
@@ -70,6 +72,7 @@
             // 
             this.flowLayoutPanel1.Controls.Add(this.onColorBtn);
             this.flowLayoutPanel1.Controls.Add(this.offColorBtn);
+            this.flowLayoutPanel1.Controls.Add(this.numericUpDown1);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 246);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -107,13 +110,36 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.matrixDisplay1.DotDisabledColor = System.Drawing.Color.Maroon;
             this.matrixDisplay1.DotEnabledColor = System.Drawing.Color.Orange;
-            this.matrixDisplay1.DotRadius = 5;
+            this.matrixDisplay1.DotRadius = 12;
             this.matrixDisplay1.ForeColor = System.Drawing.Color.Black;
             this.matrixDisplay1.Location = new System.Drawing.Point(3, 33);
             this.matrixDisplay1.MatrixText = "EAC";
             this.matrixDisplay1.Name = "matrixDisplay1";
             this.matrixDisplay1.Size = new System.Drawing.Size(806, 207);
             this.matrixDisplay1.TabIndex = 1;
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(181, 3);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            15,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDown1.TabIndex = 4;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            12,
+            0,
+            0,
+            0});
+            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // Form1
             // 
@@ -126,6 +152,7 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -139,6 +166,7 @@
         private System.Windows.Forms.Button onColorBtn;
         private System.Windows.Forms.Button offColorBtn;
         private MatrixDisplay.MatrixDisplay matrixDisplay1;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
     }
 }
 

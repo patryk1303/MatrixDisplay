@@ -40,5 +40,11 @@ namespace MatrixTestWidnowApp
                 matrixDisplay1.Invalidate();
             }
         }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            matrixDisplay1.DotRadius = (int)numericUpDown1.Value;
+            matrixDisplay1.Invalidate();
+        }
     }
 }
