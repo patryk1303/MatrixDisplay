@@ -52,6 +52,15 @@ namespace MatrixDisplay
             set { _Text = value; }
         }
 
+        private ScrollDirections.Directions Direction = ScrollDirections.Directions.NONE;
+        [Category("Dots")]
+        [Description("Dots scroll direction")]
+        public ScrollDirections.Directions ScrollDirection
+        {
+            get { return Direction; }
+            set { Direction = value; }
+        }
+
         /**
          * MatrixDisplay contructor
          * 
