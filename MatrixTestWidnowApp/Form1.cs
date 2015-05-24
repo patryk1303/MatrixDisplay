@@ -46,5 +46,23 @@ namespace MatrixTestWidnowApp
             matrixDisplay1.DotRadius = (int)numericUpDown1.Value;
             matrixDisplay1.Invalidate();
         }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (comboBox1.SelectedIndex)
+            {
+                case 0: matrixDisplay1.ScrollDirection_ = MatrixDisplay.MatrixDisplay.ScrollDirection.NONE;
+                    break;
+                case 1: matrixDisplay1.ScrollDirection_ = MatrixDisplay.MatrixDisplay.ScrollDirection.LEFT;
+                    break;
+                case 2: matrixDisplay1.ScrollDirection_ = MatrixDisplay.MatrixDisplay.ScrollDirection.RIGHT;
+                    break;
+            }
+        }
     }
 }
