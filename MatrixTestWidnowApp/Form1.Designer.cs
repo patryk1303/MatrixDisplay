@@ -35,9 +35,9 @@
             this.onColorBtn = new System.Windows.Forms.Button();
             this.offColorBtn = new System.Windows.Forms.Button();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.matrixDisplay1 = new MatrixDisplay.MatrixDisplay();
+            this.scrollDirection = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.matrixDisplay1 = new MatrixDisplay.MatrixDisplay();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -75,7 +75,7 @@
             this.flowLayoutPanel1.Controls.Add(this.onColorBtn);
             this.flowLayoutPanel1.Controls.Add(this.offColorBtn);
             this.flowLayoutPanel1.Controls.Add(this.numericUpDown1);
-            this.flowLayoutPanel1.Controls.Add(this.comboBox1);
+            this.flowLayoutPanel1.Controls.Add(this.scrollDirection);
             this.flowLayoutPanel1.Controls.Add(this.comboBox2);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 246);
@@ -130,18 +130,27 @@
             0});
             this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
-            // comboBox1
+            // scrollDirection
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.scrollDirection.FormattingEnabled = true;
+            this.scrollDirection.Items.AddRange(new object[] {
             "NONE",
             "LEFT",
             "RIGHT"});
-            this.comboBox1.Location = new System.Drawing.Point(307, 3);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 5;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.scrollDirection.Location = new System.Drawing.Point(307, 3);
+            this.scrollDirection.Name = "scrollDirection";
+            this.scrollDirection.Size = new System.Drawing.Size(121, 21);
+            this.scrollDirection.TabIndex = 5;
+            this.scrollDirection.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(434, 3);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(78, 21);
+            this.comboBox2.TabIndex = 6;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // matrixDisplay1
             // 
@@ -159,15 +168,6 @@
             this.matrixDisplay1.ScrollDirection_ = MatrixDisplay.MatrixDisplay.ScrollDirection.NONE;
             this.matrixDisplay1.Size = new System.Drawing.Size(806, 207);
             this.matrixDisplay1.TabIndex = 1;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(434, 3);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(8, 21);
-            this.comboBox2.TabIndex = 6;
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // Form1
             // 
@@ -195,7 +195,7 @@
         private System.Windows.Forms.Button offColorBtn;
         private MatrixDisplay.MatrixDisplay matrixDisplay1;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox scrollDirection;
         private System.Windows.Forms.ComboBox comboBox2;
     }
 }

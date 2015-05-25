@@ -76,10 +76,12 @@ namespace MatrixDisplay
             }
         }
 
-        /**
-         * MatrixDisplay contructor
-         * 
-         */
+        private byte[,] Matrix;
+        private int Pivot;
+
+        /// <summary>
+        /// Contructor
+        /// </summary>
         public MatrixDisplay()
         {
             ForeColor = Color.Black;
@@ -88,11 +90,14 @@ namespace MatrixDisplay
             Width = 300;
             Height = 48;
             DotRadius = 16;
+            InitMatrix(_MaxChars * 7, 7);
+            Pivot = 0;
         }
 
-        /**
-         * paints matrix
-         */ 
+        /// <summary>
+        /// paints matrix
+        /// </summary>
+        /// <param name="e">arguments</param>
         protected override void OnPaint(PaintEventArgs e)
         {
             int l = ClientRectangle.Left;
@@ -118,20 +123,19 @@ namespace MatrixDisplay
                 byte charIndex = charToIndex(MatrixText[i/7]);
                 for (int j = 0; j < dotsOnHeight; ++j)
                 {
-                    var x = i * (DotRadius * 2) + DotRadius * 2;
-                    var y = j * (DotRadius * 2) + DotRadius * 2;
+                    int x = i * (DotRadius * 2) + DotRadius * 2;
+                    int y = j * (DotRadius * 2) + DotRadius * 2;
+                    byte _char = 2;
 
                     if (charIndex < 128)
                     {
-                        if (Letters.SLetters[charIndex, j, i % 7] == 0)
+                        _char = Letters.SLetters[charIndex, Math.Abs((j + Pivot) % 7), i % 7];
+                        if (_char == 0)
                             brush.Color = DotDisabledColor;
-                        else if (Letters.SLetters[charIndex, j, i % 7] == 1)
+                        else if (_char == 1)
                             brush.Color = DotEnabledColor;
                     }
-                    else
-                    {
-
-                    }
+                    Matrix[i, j] = _char == 0 ? (byte)0 : (byte)1;
                     e.Graphics.FillEllipse(brush, x, y, DotRadius * 2, DotRadius * 2);
                 }
             }
@@ -140,14 +144,24 @@ namespace MatrixDisplay
             {
                 Invalidate();
             }
+            switch (Direction)
+            {
+                case ScrollDirection.LEFT:  Pivot--;
+                    if (Pivot < -7) Pivot = 0;
+                    Invalidate();
+                    break;
+                case ScrollDirection.RIGHT: Pivot++;
+                    if (Pivot > 7) Pivot = 0;
+                    Invalidate();
+                    break;
+            }
         }
 
-        /**
-         * Return the <b>Letters.SLetters</b> char index
-         * @param _c char to get index
-         * 
-         * @return char index if it's in supported range, if not - 0
-         */
+        /// <summary>
+        /// Returns the <b>Letters.SLetters</b> char index
+        /// </summary>
+        /// <param name="_c"> char to get index</param>
+        /// <returns>char index if it's in supported range, if not - 0</returns>
         private byte charToIndex(char _c)
         {
             byte code = (byte)_c;
@@ -168,11 +182,27 @@ namespace MatrixDisplay
             return 0;
         }
 
+        /// <summary>
+        /// Matrix scroll direction
+        /// </summary>
         public enum ScrollDirection
         {
             NONE,
             LEFT,
             RIGHT
+        }
+
+        /// <summary>
+        /// Fills Matrix with zeroes
+        /// </summary>
+        /// <param name="_width">Matrix width</param>
+        /// <param name="_height">Matrix height</param>
+        private void InitMatrix(int _width,int _height)
+        {
+            Matrix = new byte[_width, _height];
+            for (int i = 0; i < _width; ++i)
+                for (int j = 0; j < _height; ++j)
+                    Matrix[i, j] = 0;
         }
     }
 }
