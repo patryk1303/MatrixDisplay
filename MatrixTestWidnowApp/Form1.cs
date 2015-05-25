@@ -54,13 +54,13 @@ namespace MatrixTestWidnowApp
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (comboBox1.SelectedIndex)
+            switch (scrollDirection.SelectedIndex)
             {
                 case 0: matrixDisplay1.ScrollDirection_ = MatrixDisplay.MatrixDisplay.ScrollDirection.NONE;
                     break;
-                case 1: matrixDisplay1.ScrollDirection_ = MatrixDisplay.MatrixDisplay.ScrollDirection.LEFT;
+                case 1: matrixDisplay1.ScrollDirection_ = MatrixDisplay.MatrixDisplay.ScrollDirection.DOWN;
                     break;
-                case 2: matrixDisplay1.ScrollDirection_ = MatrixDisplay.MatrixDisplay.ScrollDirection.RIGHT;
+                case 2: matrixDisplay1.ScrollDirection_ = MatrixDisplay.MatrixDisplay.ScrollDirection.UP;
                     break;
             }
         }
