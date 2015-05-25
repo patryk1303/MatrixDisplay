@@ -135,8 +135,8 @@
             this.scrollDirection.FormattingEnabled = true;
             this.scrollDirection.Items.AddRange(new object[] {
             "NONE",
-            "LEFT",
-            "RIGHT"});
+            "DOWN",
+            "UP"});
             this.scrollDirection.Location = new System.Drawing.Point(307, 3);
             this.scrollDirection.Name = "scrollDirection";
             this.scrollDirection.Size = new System.Drawing.Size(121, 21);

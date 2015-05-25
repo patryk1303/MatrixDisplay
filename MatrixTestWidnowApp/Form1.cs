@@ -58,9 +58,9 @@ namespace MatrixTestWidnowApp
             {
                 case 0: matrixDisplay1.ScrollDirection_ = MatrixDisplay.MatrixDisplay.ScrollDirection.NONE;
                     break;
-                case 1: matrixDisplay1.ScrollDirection_ = MatrixDisplay.MatrixDisplay.ScrollDirection.LEFT;
+                case 1: matrixDisplay1.ScrollDirection_ = MatrixDisplay.MatrixDisplay.ScrollDirection.DOWN;
                     break;
-                case 2: matrixDisplay1.ScrollDirection_ = MatrixDisplay.MatrixDisplay.ScrollDirection.RIGHT;
+                case 2: matrixDisplay1.ScrollDirection_ = MatrixDisplay.MatrixDisplay.ScrollDirection.UP;
                     break;
             }
         }

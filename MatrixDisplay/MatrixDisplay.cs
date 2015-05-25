@@ -76,7 +76,8 @@ namespace MatrixDisplay
             }
         }
 
-        private byte[,] Matrix;
+        private byte[,] OldMatrix;
+        private byte[,] NewMatrix;
         private int Pivot;
 
         /// <summary>
@@ -90,7 +91,7 @@ namespace MatrixDisplay
             Width = 300;
             Height = 48;
             DotRadius = 16;
-            InitMatrix(_MaxChars * 7, 7);
+            NewMatrix = OldMatrix = InitMatrix(_MaxChars * 7, 7);
             Pivot = 0;
         }
 
@@ -130,13 +131,16 @@ namespace MatrixDisplay
                     if (charIndex < 128)
                     {
                         _char = Letters.SLetters[charIndex, Math.Abs((j + Pivot) % 7), i % 7];
+                        //_char = Letters.SLetters[charIndex, j, Math.Abs((i + Pivot) % 7) % 7];
                         if (_char == 0)
                             brush.Color = DotDisabledColor;
                         else if (_char == 1)
                             brush.Color = DotEnabledColor;
                     }
-                    Matrix[i, j] = _char == 0 ? (byte)0 : (byte)1;
-                    e.Graphics.FillEllipse(brush, x, y, DotRadius * 2, DotRadius * 2);
+                    NewMatrix[i, j] = _char;
+                    //if(NewMatrix[i,j] != OldMatrix[i,j])
+                        e.Graphics.FillEllipse(brush, x, y, DotRadius * 2, DotRadius * 2);
+                    OldMatrix[i, j] = _char;
                 }
             }
 
@@ -146,11 +150,11 @@ namespace MatrixDisplay
             }
             switch (Direction)
             {
-                case ScrollDirection.LEFT:  Pivot--;
+                case ScrollDirection.DOWN:  Pivot--;
                     if (Pivot < -7) Pivot = 0;
                     Invalidate();
                     break;
-                case ScrollDirection.RIGHT: Pivot++;
+                case ScrollDirection.UP: Pivot++;
                     if (Pivot > 7) Pivot = 0;
                     Invalidate();
                     break;
@@ -188,8 +192,8 @@ namespace MatrixDisplay
         public enum ScrollDirection
         {
             NONE,
-            LEFT,
-            RIGHT
+            DOWN,
+            UP
         }
 
         /// <summary>
@@ -197,12 +201,13 @@ namespace MatrixDisplay
         /// </summary>
         /// <param name="_width">Matrix width</param>
         /// <param name="_height">Matrix height</param>
-        private void InitMatrix(int _width,int _height)
+        private byte[,] InitMatrix(int _width,int _height)
         {
-            Matrix = new byte[_width, _height];
+            var Matrix = new byte[_width, _height];
             for (int i = 0; i < _width; ++i)
                 for (int j = 0; j < _height; ++j)
                     Matrix[i, j] = 0;
+            return Matrix;
         }
     }
 }
