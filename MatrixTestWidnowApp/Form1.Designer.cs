@@ -36,11 +36,13 @@
             this.offColorBtn = new System.Windows.Forms.Button();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.scrollDirection = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.numericMaxChars = new System.Windows.Forms.NumericUpDown();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.matrixDisplay1 = new MatrixDisplay.MatrixDisplay();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericMaxChars)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox1
@@ -76,7 +78,8 @@
             this.flowLayoutPanel1.Controls.Add(this.offColorBtn);
             this.flowLayoutPanel1.Controls.Add(this.numericUpDown1);
             this.flowLayoutPanel1.Controls.Add(this.scrollDirection);
-            this.flowLayoutPanel1.Controls.Add(this.comboBox2);
+            this.flowLayoutPanel1.Controls.Add(this.numericMaxChars);
+            this.flowLayoutPanel1.Controls.Add(this.comboBox1);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 246);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -143,27 +146,54 @@
             this.scrollDirection.TabIndex = 5;
             this.scrollDirection.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // comboBox2
+            // numericMaxChars
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(434, 3);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(78, 21);
-            this.comboBox2.TabIndex = 6;
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            this.numericMaxChars.Location = new System.Drawing.Point(434, 3);
+            this.numericMaxChars.Maximum = new decimal(new int[] {
+            7,
+            0,
+            0,
+            0});
+            this.numericMaxChars.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericMaxChars.Name = "numericMaxChars";
+            this.numericMaxChars.Size = new System.Drawing.Size(120, 20);
+            this.numericMaxChars.TabIndex = 7;
+            this.numericMaxChars.Value = new decimal(new int[] {
+            7,
+            0,
+            0,
+            0});
+            this.numericMaxChars.ValueChanged += new System.EventHandler(this.numericMaxChars_ValueChanged);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "CIRCLE",
+            "SQUARE"});
+            this.comboBox1.Location = new System.Drawing.Point(560, 3);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 8;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged_1);
             // 
             // matrixDisplay1
             // 
+            this.matrixDisplay1._DotShape = MatrixDisplay.MatrixDisplay.DotShape.SQUARE;
             this.matrixDisplay1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.matrixDisplay1.DotDisabledColor = System.Drawing.Color.Maroon;
             this.matrixDisplay1.DotEnabledColor = System.Drawing.Color.Orange;
-            this.matrixDisplay1.DotRadius = 12;
+            this.matrixDisplay1.DotRadius = 5;
             this.matrixDisplay1.ForeColor = System.Drawing.Color.Black;
             this.matrixDisplay1.Location = new System.Drawing.Point(3, 33);
-            this.matrixDisplay1.MatrixText = "KOMPONENT";
-            this.matrixDisplay1.MaxChars = 7;
+            this.matrixDisplay1.MatrixText = "dft    ";
+            this.matrixDisplay1.MaxChars = 3;
             this.matrixDisplay1.Name = "matrixDisplay1";
             this.matrixDisplay1.ScrollDirection_ = MatrixDisplay.MatrixDisplay.ScrollDirection.NONE;
             this.matrixDisplay1.Size = new System.Drawing.Size(806, 207);
@@ -181,6 +211,7 @@
             this.tableLayoutPanel1.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericMaxChars)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -196,7 +227,8 @@
         private MatrixDisplay.MatrixDisplay matrixDisplay1;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.ComboBox scrollDirection;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.NumericUpDown numericMaxChars;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
 
