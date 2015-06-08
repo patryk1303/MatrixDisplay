@@ -63,6 +63,26 @@ namespace MatrixTestWidnowApp
                 case 2: matrixDisplay1.ScrollDirection_ = MatrixDisplay.MatrixDisplay.ScrollDirection.UP;
                     break;
             }
+            matrixDisplay1.Invalidate();
+        }
+
+        private void numericMaxChars_ValueChanged(object sender, EventArgs e)
+        {
+            matrixDisplay1.MaxChars = (int)numericMaxChars.Value;
+        }
+
+        private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            switch (comboBox1.SelectedIndex)
+            {
+                case 0:
+                    matrixDisplay1._DotShape = MatrixDisplay.MatrixDisplay.DotShape.CIRCLE;
+                    break;
+                case 1:
+                    matrixDisplay1._DotShape = MatrixDisplay.MatrixDisplay.DotShape.SQUARE;
+                    break;
+            }
+            matrixDisplay1.Invalidate();
         }
     }
 }
